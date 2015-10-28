@@ -104,7 +104,7 @@
         }
     };
 
-    _.tmpl = function(data, str) {
+    _.tmpl = function(str, data) {
         if (!_.isObject(data) || !_.isString(str)) return '';
         str = str.replace(/#{([^}]*)}/g, function(val, replacement) {
             return eval('data.' + replacement);
