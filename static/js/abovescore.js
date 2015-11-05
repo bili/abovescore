@@ -116,6 +116,14 @@
 		console && console.log.apply(console, arguments);
 	};
 
+	_.requestAnimationFrame = window.requestAnimationFrame 
+		|| window.mozRequestAnimationFrame 
+		|| window.webkitRequestAnimationFrame 
+		|| window.msRequestAnimationFrame
+		|| function(callback){
+			window.setTimeout(callback, 1000 / 60);
+		};
+		
     var root = typeof exports !== "undefined" && exports !== null ? exports : window;
     root._ = _;
 
