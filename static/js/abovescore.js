@@ -113,7 +113,7 @@
     };
 	
 	_.log = function() {
-		if (!_.isUndefined(this.DEBUG) && this.DEBUG == true) console && console.log.apply(console, arguments);
+		if (!_.isUndefined(_.log.DEBUG) && _.log.DEBUG == true) console && console.log.apply(console, arguments);
 	};
 		
     var root = typeof exports !== "undefined" && exports !== null ? exports : window;
