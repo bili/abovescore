@@ -14,59 +14,59 @@
             "[object Undefined]": "UNDEFINED"
         };
         return types[Object.prototype.toString.call(obj)];
-    }
+    };
 
     _.isString = function(obj) {
         return _.type(obj) === "STRING";
-    }
+    };
 
     _.isStringF = function(obj) {
         return _.type(obj) === "STRING" && obj.trim() != '';
-    }
+    };
 
     _.isNumber = function(obj) {
         return _.type(obj) === "NUMBER";
-    }
+    };
 
     _.isDate = function(obj) {
         return _.type(obj) === "DATE";
-    }
+    };
 
     _.isFunction = function(obj) {
         return _.type(obj) === "FUNCTION";
-    }
+    };
 
     _.isArray = function(obj) {
         return _.type(obj) === "ARRAY";
-    }
+    };
 
     _.isObject = function(obj) {
         return _.type(obj) === "OBJECT";
-    }
+    };
 
     _.isNull = function(obj) {
         return _.type(obj) === "NULL";
-    }
+    };
 
     _.isBoolean = function(obj) {
         return _.type(obj) === "BOOLEAN";
-    }
+    };
 
     _.isRegExp = function(obj) {
         return _.type(obj) === "REGEXP";
-    }
+    };
 
     _.isUndefined = function(obj) {
         return _.type(obj) === "UNDEFINED";
-    }
+    };
 
     _.isChildOf = function(child, parent) {
         return child instanceof parent;
-    }
+    };
 
     _.Getter = function(k) {
         return this['__'+k];
-    }
+    };
 
     _.Setter = function(k, v) {
         if (_.isUndefined(k)) return this;
@@ -80,12 +80,12 @@
             return this;
         }
         return this;
-    }
+    };
 
     _.Data = function(k, v) {
         if (arguments.length === 1 && _.isString(k)) return _.Getter.call(this, k);
         return _.Setter.call(this, k, v);
-    }
+    };
 
     _.GUID = function() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -93,7 +93,7 @@
                 v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         }).toUpperCase();
-    }
+    };
 
     _.namespace = function(namespaceStr) {
         var cur = window;
@@ -110,7 +110,11 @@
             return eval('data.' + replacement);
         });
         return str;
-    }
+    };
+	
+	_.log = function() {
+		console && console.log.apply(console, arguments);
+	};
 
     var root = typeof exports !== "undefined" && exports !== null ? exports : window;
     root._ = _;
