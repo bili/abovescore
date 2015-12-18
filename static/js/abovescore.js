@@ -106,8 +106,42 @@
 
     _.tmpl = function(str, data) {
         if (!_.isObject(data) || !_.isString(str)) return '';
+        function filter(f, txt, type) {
+            var ret = txt;
+            switch (f) {
+                case 'UPPERCASE':
+                    ret = (type == 'STRING') ? txt.toUpperCase() : ret;
+                    break;
+                case 'REVERSE':
+                    ret = (type == 'STRING') ? txt.split('').reverse().join('') : ret;
+                    break;
+                case 'THOUSAND':
+                    ret = (type == 'NUMBER') ? (function() {
+                        ret = ret + '';
+                        var intPart = ret.split('.')[0];
+                        var floatPart = ret.split('.')[1];
+                        var res = '';
+                        while (intPart.length > 3) {
+                            res = ',' + intPart.slice(-3) + res;
+                            intPart = intPart.slice(0, intPart.length-3);
+                        }
+                        if (intPart) res = intPart + res;
+                        return res + (floatPart ? '.' + floatPart : '');
+                    }()) : ret
+                    break;
+                default:
+                    break;
+            }
+            return ret;
+        }
         str = str.replace(/#{([^}]*)}/g, function(val, replacement) {
-            return eval('data.' + replacement);
+            var filters = replacement.split(/\s*\|\s*/g);
+            var originText = filters.shift();
+            replacement = eval('data.' + originText);
+            for (var i in filters) {
+                replacement = filter(filters[i], replacement, _.type(replacement));
+            }
+            return replacement;
         });
         return str;
     };
