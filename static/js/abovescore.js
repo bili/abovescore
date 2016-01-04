@@ -147,7 +147,7 @@
     };
 	
 	_.log = function() {
-		if (!_.isUndefined(_.log.DEBUG) && _.log.DEBUG == true) console && console.log.apply(console, arguments);
+		if (!_.isUndefined(_.log.debug) && _.log.debug == true) console && console.log.apply(console, arguments);
 	};
 	
     _.support = (function() {

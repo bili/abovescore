@@ -1,4 +1,4 @@
-_.log.DEBUG = true;
+_.log.debug = true;
 
 _.log(_.type('fasfsd'), _.type(234), _.type(new Date), _.type(false));
 
