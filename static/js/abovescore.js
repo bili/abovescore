@@ -105,7 +105,7 @@
     };
 
     _.tmpl = function(str, data) {
-        if (!_.isObject(data) || !_.isString(str)) return '';
+        if (!_.isObject(data) || !_.isString(str)) return str;
         function filter(f, txt, type) {
             var ret = txt;
             switch (f) {
