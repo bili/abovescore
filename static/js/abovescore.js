@@ -174,6 +174,11 @@
         };
  	})();
     
+    // @return random int number between min and max (min&max are included)
+    _.rand = function(min, max) {
+        return Math.floor(Math.random() * (max-min+1)) + min;
+    };
+    
     var root = typeof exports !== "undefined" && exports !== null ? exports : window;
     root._ = _;
 

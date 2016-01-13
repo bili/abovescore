@@ -11,3 +11,5 @@ var bili = {name: 'bili', money: 1254836.47};
 _.log(_.tmpl("i'm #{name|UPPERCASE|REVERSE}. i have $#{money|THOUSAND}", bili));
 
 _.log(_.support('animation'));
+
+_.log(_.rand(4,  10));
