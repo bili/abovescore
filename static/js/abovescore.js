@@ -174,7 +174,7 @@
         };
  	})();
     
-    // @return random int number between min and max (min&max are included)
+    // @return: Random int number between min and max (min&max are included)
     _.rand = function(min, max) {
         return Math.floor(Math.random() * (max-min+1)) + min;
     };
