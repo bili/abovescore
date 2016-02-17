@@ -13,3 +13,5 @@ _.log(_.tmpl("i'm #{name|UPPERCASE|REVERSE}. i have $#{money|THOUSAND}", bili));
 _.log(_.support('animation'));
 
 _.log(_.rand(4,  10));
+
+_.log(_.formatDate(new Date(), 'yyyy-MM'));
